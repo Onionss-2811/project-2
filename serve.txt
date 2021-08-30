@@ -1,0 +1,9 @@
+
+composer create-project laravel/laravel myproject
+php artisan serve
+php artisan make:controller
+php artisan make:model
+php artisan migrate
+php artisan migrate:refresh
+php artisan migrate:fresh
+cp .env.example .env
