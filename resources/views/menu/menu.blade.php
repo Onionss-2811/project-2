@@ -5,5 +5,6 @@
     <span><a href="{{route('course.index')}}">Course</a></span>
     <span><a href="{{route('subject.index')}}">Subject</a></span>
     <span><a href="{{route('grade.index')}}">Grade</a></span>
+    {{-- <span><a href="{{route('mark_index')}}">Mark</a></span> --}}
     <span><a href="{{route('mark.index')}}">Mark</a></span>
 </div>

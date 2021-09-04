@@ -9,6 +9,10 @@ use App\Models\Grade;
 use App\Models\Gender;
 use Illuminate\Support\Facades\Redirect;
 
+use Excel;
+
+use App\Imports\StudentImport;
+
 class StudentController extends Controller
 {
     public function index()
@@ -40,6 +44,12 @@ class StudentController extends Controller
         $student->password = $request->get('password');
         $student->save();
         return Redirect::route('student.index');
+    }
+
+    public function importFile(Request $request)
+    {
+        Excel::import(new StudentImport, $request->file);
+        return "Imported Successfuly";
     }
 
     public function edit($id)

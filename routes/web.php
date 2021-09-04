@@ -42,7 +42,11 @@ Route::middleware([CheckLoginAdmin::class])->group(function (){
     Route::resource('subject', SubjectController::class);
     Route::resource('grade', GradeController::class);
     Route::resource('student', StudentController::class);
+    Route::post('/student/create', [StudentController::class, 'importFile'])->name('StudentImportFile');
+
+
     Route::resource('mark', MarkController::class);
+    Route::post('/mark/import_file', [MarkController::class, 'importFile'])->name('importFile');
 });
 
 

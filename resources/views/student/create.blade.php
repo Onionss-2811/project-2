@@ -9,7 +9,7 @@
 <body>
     @include ('menu.menu')
     <h1>Add Majors</h1>
-    <form method="post" action="{{route('student.store')}}">
+    <form method="post" action="{{route('student.store')}}" >
         @csrf
         <table>
             <tr>
@@ -53,6 +53,12 @@
                 <td><button>Submit</button></td>
             </tr>
         </table>
+    </form>
+    <form method="POST" action="{{route('StudentImportFile')}}" enctype="multipart/form-data" action="">
+        @csrf
+        <label for="file">Import Excel: </label>
+        <input type="file" name="file">
+        <button>Submit</button>
     </form>
 </body>
 </html>

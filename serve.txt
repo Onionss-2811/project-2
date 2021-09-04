@@ -7,3 +7,5 @@ php artisan migrate
 php artisan migrate:refresh
 php artisan migrate:fresh
 cp .env.example .env
+
+php artisan make:import StudentImport --model=Students
