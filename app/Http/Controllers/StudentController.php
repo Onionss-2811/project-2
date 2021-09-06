@@ -36,6 +36,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $student = new Students();
+        $student->code = $request->get('code');
         $student->name = $request->get('name');
         $student->gender = $request->get('gender');
         $student->date_birth = $request->get('date_birth');
@@ -69,6 +70,7 @@ class StudentController extends Controller
         //
 
         $student = Students::find($id);
+        $student->code = $request->get('code');
         $student->name = $request->get('name');
         $student->gender = $request->get('gender');
         $student->date_birth = $request->get('date_birth');

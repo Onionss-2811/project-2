@@ -5,6 +5,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\MajorsController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\ListMarkController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\MarkController;
 use App\Http\Controllers\LoginController;
@@ -44,9 +45,15 @@ Route::middleware([CheckLoginAdmin::class])->group(function (){
     Route::resource('student', StudentController::class);
     Route::post('/student/create', [StudentController::class, 'importFile'])->name('StudentImportFile');
 
-
     Route::resource('mark', MarkController::class);
-    Route::post('/mark/import_file', [MarkController::class, 'importFile'])->name('importFile');
+    Route::post('/mark/create', [MarkController::class, 'importFile'])->name('MarkImportFile');
+    Route::post('/mark/search', [MarkController::class, 'search'])->name('SearchStudent');
+
+    Route::get('/list_mark', [ListMarkController::class, 'index'])->name('list_mark');
+    Route::post('/list_mark/search', [ListMarkController::class, 'search'])->name('ListMarkSearch');
+    Route::post('/list_mark/search_grade', [ListMarkController::class, 'search_grade'])->name('ListMarkGradeSearch');
+    Route::get('/list_mark/mark_student/{id}',[ListMarkController::class, 'view_mark']);
+    Route::get('/list_mark/mark_grade/{id}',[ListMarkController::class, 'view_mark_grade']);
 });
 
 

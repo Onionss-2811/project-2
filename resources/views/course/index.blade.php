@@ -7,36 +7,46 @@
     <title>Document</title>
 </head>
 <body>
-    @include ('menu.menu')
-    <h1>List course</h1>
-    <a href="{{route('course.create')}}">
-        Create
-    </a>
-    <table border="1" >
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-        @foreach ($course as $course)
-            <tr>
-                <td>{{$course->id}}</td>
-                <td>{{$course->name}}</td>
-                <td>
-                    <button>
-                        <a href="{{route('course.edit',$course->id)}}">Edit</a>
-                    </button>
-                </td>
-                <td>
-                    <form method="post" action="{{route('course.destroy', $course ->id)}}">
-                        @csrf
-                        @method('delete')
-                        <button>Delete</button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-    </table>
+    <div class="main">
+        @include ('menu.menu')
+        <div>
+            <h1>List course</h1>
+            <a href="{{route('course.create')}}">
+                Create
+            </a>
+            <table border="1" class="table table-striped" >
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>List Grade</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                @foreach ($course as $course)
+                    <tr>
+                        <td>{{$course->id}}</td>
+                        <td>{{$course->name}}</td>
+                        <td>
+                            <button>
+                                <a href="{{route('course.show',$course->id)}}">View Grade</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button>
+                                <a href="{{route('course.edit',$course->id)}}">Edit</a>
+                            </button>
+                        </td>
+                        <td>
+                            <form method="post" action="{{route('course.destroy', $course ->id)}}">
+                                @csrf
+                                @method('delete')
+                                <button>Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
+    </div>
 </body>
 </html>

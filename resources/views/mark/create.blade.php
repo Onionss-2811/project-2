@@ -8,15 +8,27 @@
     <title>Document</title>
 </head>
 <body>
-    @include ('menu.menu')
-    <h1>Add Mark</h1>
-    <div>
-        <button>
-            <a href="{{route('mark_importForm')}}">Thêm theo danh sách</a>
-        </button>
-        <button>
-            <a href="#">Thêm theo cá nhân</a>
-        </button>
+    <div class="main">
+        @include ('menu.menu')
+        <div>
+            <h1>Add Mark</h1>
+            <div>
+                <form method="POST" action="{{route('SearchStudent')}}">
+                    @csrf
+                    <span>Nhập mã sinh viên: </span>
+                    <input type="text" name="code">
+                    <button>Search</button>
+                </form>
+            </div>
+            <div>
+                <form method="POST" action="{{route('MarkImportFile')}}" enctype="multipart/form-data" action="">
+                    @csrf
+                    <label for="file">Import Excel: </label>
+                    <input type="file" name="file">
+                    <button>Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 </html>

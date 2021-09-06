@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Grade;
+use App\Models\Majors;
+use App\Models\ListGrade;
 use Illuminate\Http\Request;
+
+use DB;
 
 class CourseController extends Controller
 {
@@ -24,6 +29,17 @@ class CourseController extends Controller
         $course->name = $name;
         $course->save();
        return redirect()->route('course.index');
+    }
+
+    public function show($id){
+        $major = Majors::all();
+        $course = Course::all();
+        $listGrade = ListGrade::where('id_course', $id)->get();
+        return view('course.listGrade', [
+            'major' => $major,
+            'course' => $course,
+            'listGrade'=>$listGrade
+        ]);
     }
 
     public function edit($id){

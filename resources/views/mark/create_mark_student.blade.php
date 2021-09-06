@@ -10,49 +10,45 @@
     <div class="main">
         @include ('menu.menu')
         <div>
-            <h1>Add Student</h1>
-            <form method="post" action="{{route('student.store')}}" >
+            <h1>Add mark</h1>
+            <form method="post" action="{{route('mark.store')}}" >
                 @csrf
                 <table class="table table-striped">
                     <tr>
-                        <td>Code:</td>
-                        <td><input type="text" name="code"></td>
+                        <td>ID student:</td>
+                        <td><input type="text" name="id_student"></td>
                     </tr>
                     <tr>
-                        <td>Name:</td>
-                        <td><input type="text" name="name"></td>
-                    </tr>
-                    <tr>
-                        <td>Gender:</td>
+                        <td>Môn học:</td>
                         <td>
-                            <select name="gender">
-                                @foreach ($gender as $gender)
-                                <option value="{{ $gender->id}}">{{$gender->name}}</option>
+                            <select name="id_subject">
+                                @foreach ($subject as $subject)
+                                    <option value="{{ $subject->id}}">{{$subject->name}}</option>
                                 @endforeach
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td>Date of Birth:</td>
-                        <td><input type="date" name="date_birth"></td>
-                    </tr>
-                    <tr>
-                        <td>Grade:</td>
+                        <td>Kiểu thi:</td>
                         <td>
-                            <select name="id_grade">
-                                @foreach ($grade as $grade)
-                                <option value="{{ $grade->id}}">{{$grade->name}}</option>
+                            <select name="type_test">
+                                @foreach ($type_test as $type_test)
+                                    <option value="{{ $type_test->id}}">{{$type_test->name}}</option>
                                 @endforeach
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td>Email:</td>
-                        <td><input type="email" name="email"></td>
+                        <td>Lần thi:</td>
+                        <td><input type="text" name="number_of_test"></td>
                     </tr>
                     <tr>
-                        <td>Password:</td>
-                        <td><input type="text" name="password"></td>
+                        <td>Điểm:</td>
+                        <td><input type="text" name="mark"></td>
+                    </tr>
+                    <tr>
+                        <td>Id Admin:</td>
+                        <td><input type="text" name="id_admin"></td>
                     </tr>
                     <tr>
                         <td><button><a href="{{route('student.index')}}">Back</a></button></td>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\App;
 use App\Models\ListMark;
 use App\Models\Mark;
 use App\Models\Students;
+use App\Models\ListGradeStudent;
 use App\Models\Subject;
 use App\Models\TypeTest;
 use App\Models\Admin;
@@ -34,9 +35,29 @@ class MarkController extends Controller
         return view('mark.create');
     }
 
-    public function show()
+    public function search(Request $request){
+        $subject = Subject::all();
+        $type_test = TypeTest::all();
+        $code = $request->get('code');
+        $student = ListGradeStudent::where('code', $code)->get();
+        return view('mark.create_mark_student', [
+            'student'=>$student,
+            'subject' => $subject,
+            'type_test' => $type_test,
+        ]);
+    }
+
+    public function store(Request $request)
     {
-        return view('mark.form_import');
+        $mark = new Mark();
+        $mark->id_student = $request->get('id_student');
+        $mark->id_subject = $request->get('id_subject');
+        $mark->type_test = $request->get('type_test');
+        $mark->number_of_test = $request->get('number_of_test');
+        $mark->mark = $request->get('mark');
+        $mark->id_admin = $request->get('id_admin');
+        $mark->save();
+        return Redirect::route('mark.index');
     }
 
     public function importFile(Request $request)

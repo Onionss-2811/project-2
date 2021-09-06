@@ -20,8 +20,9 @@ class LoginController extends Controller
         try {
             $student = Students::where('email', $email)->where('password', $password)->firstOrFail();
             $request->session()->put('student', $student->id);
-            return Redirect::route('login-success');
-        } catch (Exception $e) {
+            return Redirect::route('login-success', [
+                'student'=>$student,]);
+            } catch (Exception $e) {
            return Redirect::route('login')->with('error', 'Email hoặc mật khẩu không chính xác');
         }
     }

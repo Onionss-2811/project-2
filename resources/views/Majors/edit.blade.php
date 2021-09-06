@@ -7,21 +7,25 @@
     <title>Document</title>
 </head>
 <body>
-    @include ('menu.menu')
-    <h1>Edit Majors</h1>
-    <form method="post" action="{{route('majors.update', $majors->id)}}">
-        @method('PUT')
-        @csrf
-        <table>
-            <tr>
-                <td>Name:</td>
-                <td><input type="text" name="name" value="{{$majors->name}}"></td>
-            </tr>
-            <tr>
-                <td><button><a href="{{route('majors.index')}}">Back</a></button></td>
-                <td><button>Submit</button></td>
-            </tr>
-        </table>
-    </form>
+    <div class="main">
+        @include ('menu.menu')
+        <div>
+            <h1>Edit Majors</h1>
+            <form method="post" action="{{route('majors.update', $majors->id)}}">
+                @method('PUT')
+                @csrf
+                <table class="table table-striped">
+                    <tr>
+                        <td>Name:</td>
+                        <td><input type="text" name="name" value="{{$majors->name}}"></td>
+                    </tr>
+                    <tr>
+                        <td><button><a href="{{route('majors.index')}}">Back</a></button></td>
+                        <td><button>Submit</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

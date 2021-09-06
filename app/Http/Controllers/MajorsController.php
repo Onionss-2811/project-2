@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Majors;
+use App\Models\Course;
+use App\Models\ListGrade;
 use Illuminate\Http\Request;
 
 class MajorsController extends Controller
@@ -24,6 +26,17 @@ class MajorsController extends Controller
         $majors->name = $name;
         $majors->save();
        return redirect()->route('majors.index');
+    }
+
+    public function show($id){
+        $major = Majors::all();
+        $course = Course::all();
+        $listGrade = ListGrade::where('id_majors', $id)->get();
+        return view('majors.listGrade', [
+            'major' => $major,
+            'course' => $course,
+            'listGrade'=>$listGrade
+        ]);
     }
 
     public function edit($id){

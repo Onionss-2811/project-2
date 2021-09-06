@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ListGrade;
+use App\Models\ListGradeStudent;
+use App\Models\Students;
+use App\Models\Gender;
 use App\Models\Grade;
 use App\Models\Course;
 use App\Models\Majors;
@@ -53,6 +56,19 @@ class GradeController extends Controller
         $grade->save();
         return Redirect::route('grade.index');
     }
+
+
+    public function show($id){
+        $grade = Grade::all();
+        $gender = Gender::all();
+        $listGradeStudent = ListGradeStudent::where('id_grade', $id)->get();
+        return view('grade.listStudent', [
+            'grade' => $grade,
+            'gender' => $gender,
+            'listGradeStudent'=>$listGradeStudent
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

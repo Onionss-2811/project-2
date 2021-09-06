@@ -1,0 +1,79 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.admin-menu{
+    width: 15%;
+    height: 100vh;
+    background-color: rgb(23, 25, 99);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item-menu{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.logout{
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    align-items: center;
+    border-top: 1px solid black;
+}
+.item{
+    margin-top: 5px;
+    width: 100%;
+    height: 7vh;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.item-home{
+    width: 100%;
+    height: 12vh;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.icon{
+    padding-left: 10px;
+    width: 30%;
+    color: white;
+}
+.text{
+    font-weight: bold;
+    color: white;
+}
+.text a{
+    text-decoration: none;
+    color: white;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+}
+.home{
+    width: 85%;
+    height: 100vh;
+    background-color: rgb(134, 86, 15);
+}
+.navbar{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 12vh;
+    background-color:aliceblue;
+}
+.logo{
+    width: 163px;
+    height: 53.5px;
+    background-image: url(resources/bkacad_2.png);
+    background-size: cover;
+}

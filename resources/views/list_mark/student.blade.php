@@ -4,18 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="admin.css">
     <title>Document</title>
 </head>
 <body>
     <div class="main">
-            @include ('menu.menu')
+        @include ('menu.menu')
         <div>
-            <h1>List Student</h1>
-            <a href="{{route('student.create')}}">
-                Create
-            </a>
-            <table border="1"  class="table table-striped">
+            <table border="1" class="table table-striped">
                 <tr>
                     <th>Code</th>
                     <th>Name</th>
@@ -24,8 +19,7 @@
                     <th>Grade</th>
                     <th>Email</th>
                     <th>Password</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th>View Mark</th>
                 </tr>
                 @foreach ($student as $student)
                     <tr>
@@ -39,15 +33,8 @@
 
                         <td>
                             <button>
-                                <a href="{{route('student.edit',$student->id)}}">Edit</a>
+                                <a href="/list_mark/mark_student/{{$student->id}}">View Mark</a>
                             </button>
-                        </td>
-                        <td>
-                            <form method="post" action="{{route('student.destroy', $student->id)}}">
-                                @csrf
-                                @method('delete')
-                                <button>Delete</button>
-                            </form>
                         </td>
                     </tr>
                 @endforeach
