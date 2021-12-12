@@ -24,6 +24,10 @@
           <div class="icon"><i class="fas fa-home fa-lg"></i></div>
           <div class="text"><a href="{{route('admin.index')}}">Trang chủ</a></div>
         </div>
+        <!-- <div class="item">
+            <div class="icon"><i class="fas fa fa-users fa-lg"></i></div>
+            <div class="text"><a href="{{route('adminShow')}}">Admin</a></div>
+          </div> -->
         <div class="item">
           <div class="icon"><i class="fas fa-user-graduate fa-lg"></i></div>
           <div class="text"><a href="{{route('student.index')}}">Sinh Viên</a></div>
@@ -52,6 +56,10 @@
           <div class="icon"><i class="fas fa-clipboard-list fa-lg"></i></div>
           <div class="text"><a href="{{route('list_mark')}}">Danh sách điểm</a></div>
         </div>
+        <div class="item">
+            <div class="icon"><i class="fas fa fa-comments fa-lg"></i></div>
+            <div class="text"><a href="{{route('instruct')}}">Hướng dẫn</a></div>
+          </div>
       </div>
       <div class="logout">
         <div class="icon"><i class="fas fa-power-off fa-lg"></i></div>

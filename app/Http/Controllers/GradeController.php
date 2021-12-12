@@ -20,9 +20,9 @@ class GradeController extends Controller
      */
     public function index()
     {
-        $grade = ListGrade::all();
+        $grades = ListGrade::paginate(5);
         return view('grade.index',[
-            'grade' => $grade,
+            'grades' => $grades,
         ]);
     }
 

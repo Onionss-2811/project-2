@@ -25,7 +25,7 @@
         <div class="navbar-menu">
           <div class="menu menu-home"><strong>TRANG CHỦ</strong></div>
           <div class="menu nemu-introduce">GIỚI THIỆU</div>
-          <div class="menu menu-news">TIN TỨC</div>
+          <div class="menu menu-news">HƯỚNG DẪN</div>
           <div class="menu menu-contact">LIÊN HỆ</div>
         </div>
         <!-- btn login -->

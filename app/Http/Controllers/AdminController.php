@@ -17,6 +17,7 @@ class AdminController extends Controller
     public function index(){
         return view('admin.index');
     }
+
     public function show(){
         $admin = ListRole::all();
         return view('admin.show',[
@@ -38,7 +39,7 @@ class AdminController extends Controller
        $admin->email = $request->get('email');
        $admin->password = $request->get('password');
        $admin->save();
-       return Redirect::route('admin.index');
+       return Redirect::route('adminShow');
 
 
     }
@@ -59,11 +60,11 @@ class AdminController extends Controller
         $admin->email = $request->get('email');
         $admin->password = $request->get('password');
         $admin->save();
-        return redirect()->route('admin.index');
+        return redirect()->route('adminShow');
     }
 
     public function destroy($id){
         Admin::find($id)->delete();
-        return redirect()->route('admin.index');
+        return redirect()->route('adminShow');
     }
 }

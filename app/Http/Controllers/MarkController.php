@@ -24,20 +24,16 @@ class MarkController extends Controller
 {
     public function index()
     {
-        $mark = ListMark::all();
+        $mark = ListMark::paginate(5);
         return view('mark.index',[
-            'mark' => $mark,
+            'marks' => $mark,
         ]);
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('mark.create');
-    }
-
-    public function search(Request $request){
         $subject = Subject::all();
-        $type_test = TypeTest::all();
+        $type_test = TypeTest::where('id','!=',3)->get();
         $code = $request->get('code');
         $student = ListGradeStudent::where('code', $code)->get();
         return view('mark.create_mark_student', [
@@ -45,6 +41,10 @@ class MarkController extends Controller
             'subject' => $subject,
             'type_test' => $type_test,
         ]);
+    }
+
+    public function search(Request $request){
+
     }
 
     public function store(Request $request)
@@ -63,14 +63,14 @@ class MarkController extends Controller
     public function importFile(Request $request)
     {
         Excel::import(new MarkImport, $request->file);
-        return "Imported Successfuly";
+        return Redirect::route('mark.index');
     }
 
     public function edit($id)
     {
         $subject = Subject::all();
         $student = Students::all();
-        $type_test = TypeTest::all();
+        $type_test = TypeTest::where('id','!=',3)->get();
         $admin = Admin::all();
         $mark = ListMark::find($id);
         return view('mark.edit', [

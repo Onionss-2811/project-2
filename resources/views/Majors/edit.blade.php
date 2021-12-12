@@ -7,24 +7,42 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="main">
+    <div class="containe">
         @include ('menu.menu')
-        <div>
-            <h1>Edit Majors</h1>
-            <form method="post" action="{{route('majors.update', $majors->id)}}">
-                @method('PUT')
-                @csrf
-                <table class="table table-striped">
-                    <tr>
-                        <td>Name:</td>
-                        <td><input type="text" name="name" value="{{$majors->name}}"></td>
-                    </tr>
-                    <tr>
-                        <td><button><a href="{{route('majors.index')}}">Back</a></button></td>
-                        <td><button>Submit</button></td>
-                    </tr>
-                </table>
-            </form>
+        <div class="admin">
+            <div class="navbar">
+                <div class="logo-nav-bar"></div>
+            </div>
+            <div class="title">
+                <p>CHỈNH SỬA CHUYÊN NGÀNH: </p>
+            </div>
+            <div class="tables">
+                <div class="content-create">
+                    <form method="post" action="{{route('majors.update', $majors->id)}}">
+                        @method('PUT')
+                        @csrf
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <button class="buton btn btn-outline-danger btn-sm">
+                                            <a class="link-back" href="{{route('majors.index')}}">Trở lại</a>
+                                        </button></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: bold">Name:</td>
+                                    <td><input type="text" name="name" value="{{$majors->name}}" required></td>
+                                    <td><button class="buton btn btn-outline-success btn-sm">Submit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </body>

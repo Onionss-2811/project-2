@@ -7,30 +7,44 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="main">
+    <div class="containe">
         @include ('menu.menu')
-        <div>
-            <table border="1" class="table table-striped">
-                <tr>
-                    <th>Name</th>
-                    <th>Chuyên Ngành</th>
-                    <th>Khóa</th>
-                    <th>View Mark</th>
-                </tr>
-                @foreach ($grade as $grade)
-                    <tr>
-                        <td>{{$grade->name}}</td>
-                        <td>{{$grade->majors_name}}</td>
-                        <td>{{$grade->courses_name}}</td>
+        <div class="admin">
+            <div class="navbar">
+                <div class="logo-nav-bar"></div>
+            </div>
+            <div class="title">
+                <p>THÔNG TIN HỌC SINH: </p>
+            </div>
+            <div class="tables">
+                <div class="content">
+                    <table class="table table-hover" >
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Chuyên Ngành</th>
+                                <th>Khóa</th>
+                                <th>View Mark</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($grade as $grade)
+                            <tr>
+                                <td>{{$grade->name}}</td>
+                                <td>{{$grade->name_majors}}</td>
+                                <td>{{$grade->name_course}}</td>
 
-                        <td>
-                            <button>
-                                <a href="/list_mark/mark_grade/{{$grade->id}}">View Mark</a>
-                            </button>
-                        </td>
-                    </tr>
-                @endforeach
-            </table>
+                                <td>
+                                    <button class="buton btn btn-outline-success btn-sm">
+                                        <a class="link-edit" href="/list_mark/mark_grade/{{$grade->id}}">View Mark</a>
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </body>

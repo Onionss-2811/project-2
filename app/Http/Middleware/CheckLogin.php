@@ -20,7 +20,7 @@ class CheckLogin
         if($request->session()->exists('student')) {
             return $next($request);
         } else {
-            return Redirect::route('login')->with('error', 'Mất dạy');
+            return Redirect::route('login')->with('error', 'Vui lòng đăng nhập');
         }
     }
 }

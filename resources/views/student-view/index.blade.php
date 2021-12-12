@@ -23,10 +23,10 @@
         </div>
         <!-- menu -->
         <div class="navbar-menu">
-          <div class="menu menu-home"><strong>THÔNG TIN</strong></div>
-          <div class="menu nemu-introduce">HƯỚNG DẪN</div>
-          <div class="menu menu-news">XEM ĐIỂM</div>
-          <div class="menu menu-contact">LIÊN HỆ</div>
+            <div class="menu menu-home"><strong>THÔNG TIN</strong></div>
+            <div class="menu nemu-introduce">HƯỚNG DẪN</div>
+            <div class="menu menu-news"><a href="/list_mark/{{$students->id}}"><strong>XEM ĐIỂM</strong></a></div>
+            <div class="menu menu-contact">LIÊN HỆ</div>
         </div>
         <!-- btn login -->
         <div class="navbar-login">
@@ -69,27 +69,27 @@
                         <table>
                             <tr>
                                 <td class="key">Mã số:</td>
-                                <td class="value">BKC19142</td>
+                                <td class="value">{{$students->code}}</td>
                             </tr>
                             <tr>
                                 <td class="key">Họ Tên:</td>
-                                <td class="value">Không Biết Tên</td>
+                                <td class="value">{{$students->name}}</td>
                             </tr>
                             <tr>
                                 <td class="key">Ngày Sinh:</td>
-                                <td class="value">28/11/2001</td>
+                                <td class="value">{{$students->date_birth}}</td>
                                 <td class="key">Giới Tính:</td>
-                                <td class="value">Nữ</td>
+                                <td class="value">{{$students->name_gender}}</td>
                             </tr>
                             <tr>
                                 <td class="key">Ngành:</td>
-                                <td class="value">Lập Trình</td>
+                                <td class="value">{{$students->name_majors}}</td>
                             </tr>
                             <tr>
                                 <td class="key">Lớp:</td>
-                                <td class="value">BKD01</td>
+                                <td class="value">{{$students->name_grade}}</td>
                                 <td class="key">Khóa học:</td>
-                                <td class="value">Khóa 11</td>
+                                <td class="value">{{$students->name_course}}</td>
                             </tr>
                         </table>
                     </div>

@@ -8,6 +8,9 @@ use App\Models\Students;
 use App\Models\Grade;
 use App\Models\Gender;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\CursorPaginator;
 
 use Excel;
 
@@ -17,9 +20,9 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $student = ListGradeStudent::all();
+        $students = ListGradeStudent::paginate(5);
         return view('student.index',[
-            'student' => $student,
+            'students' => $students,
         ]);
     }
 
@@ -50,7 +53,7 @@ class StudentController extends Controller
     public function importFile(Request $request)
     {
         Excel::import(new StudentImport, $request->file);
-        return "Imported Successfuly";
+        return Redirect::route('student.index');
     }
 
     public function edit($id)

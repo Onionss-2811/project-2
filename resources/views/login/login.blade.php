@@ -14,8 +14,8 @@
             <h1>Đăng nhập</h1>
             <form class="form" action="{{ route('login-process') }}" method="post">
                 @csrf
-                <input type="email" name="email" placeholder="Enter your email...">
-                <input type="password" type="password" name="password" placeholder="Enter your password...">
+                <input type="email" name="email" placeholder="Enter your email..." required>
+                <input type="password" type="password" name="password" placeholder="Enter your password..." required>
 
                     @if (Session::exists('error'))
                         {{Session::get('error')}}

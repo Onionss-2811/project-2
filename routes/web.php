@@ -10,6 +10,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\MarkController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LoginAdminController;
+use App\Http\Controllers\InstructController;
 use App\Http\Middleware\CheckLogin;
 use App\Http\Middleware\CheckLoginAdmin;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,10 @@ Route::get('/logout', [LoginController::class, 'logout'])->name("logout");
 //
 Route::middleware([CheckLogin::class])->group(function (){
     // login-success
-    Route::get('/index', function (){return view('student-view.index');})->name("login-success");
+    Route::get('/index', [LoginController::class, 'show'])->name("login-success");
+    //
+
+    Route::get('/list_mark/{id}',[LoginController::class, 'view_mark']);
 });
 
 // login admin
@@ -38,6 +42,9 @@ Route::middleware([CheckLoginAdmin::class])->group(function (){
     Route::get('/view-admin', function (){return view('admin.index');})->name('view-admin');
     // process
     Route::resource('admin', AdminController::class);
+
+    Route::get('/admin/show', [AdminController::class, 'show'])->name('adminShow');
+
     Route::resource('majors', MajorsController::class);
     Route::resource('course', CourseController::class);
     Route::resource('subject', SubjectController::class);
@@ -54,6 +61,8 @@ Route::middleware([CheckLoginAdmin::class])->group(function (){
     Route::post('/list_mark/search_grade', [ListMarkController::class, 'search_grade'])->name('ListMarkGradeSearch');
     Route::get('/list_mark/mark_student/{id}',[ListMarkController::class, 'view_mark']);
     Route::get('/list_mark/mark_grade/{id}',[ListMarkController::class, 'view_mark_grade']);
+
+    Route::get('/instruct', [InstructController::class, 'index'])->name('instruct');
 });
 
 
